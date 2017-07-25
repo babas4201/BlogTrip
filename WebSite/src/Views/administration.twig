@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="panel panel-default" >
+        <div class="panel-body" style="text-align: center">
+            Seuls les administrateurs peuvent se connecter:
+        </div>
+    </div>
+    <div class="panel panel-default" >
+        <div class="panel-body">
+            {% form_theme form 'bootstrap_3_layout.html.twig' %}
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+
+            {{ form_label(form.adminUsername, 'Username:') }}
+            <div class='form-group'>
+                {{ form_widget(form.adminUsername) }}
+                {{ form_errors(form.adminUsername) }}
+            </div>
+
+            {{ form_label(form.adminPassword, 'Mot de passe:') }}
+            <div class='form-group'>
+                {{ form_widget(form.adminPassword) }}
+                {{ form_errors(form.adminPassword) }}
+            </div>
+            <button type="submit" class="btn btn-success center-block">Submit</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>

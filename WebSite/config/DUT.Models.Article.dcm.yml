@@ -1,0 +1,27 @@
+DUT\Models\Article:
+  type: entity
+  table: article
+
+  id:
+    arId:
+      type: integer
+      generator:
+        strategy: auto
+  fields:
+        arTitle:
+            type: string
+            column: arTitle
+        arDescription:
+            type: text
+            column: arDescription
+        arDate:
+            type: datetime
+            default: CURRENT_TIMESTAMP
+            columnDefinition: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            column: arDate
+        arLink:
+            type: string
+            column: arLink
+        arDescPhoto:
+            type: string
+            column: arDescPhoto

@@ -1,0 +1,24 @@
+<!-- Main part -->
+<div class="container">
+    {% if photo == null %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1 class="lead" style="text-align: center">
+                    Encore aucune photo publiée.
+                </h1>
+            </div>
+        </div>
+    {% else %}
+        <div class="panel panel-default" >
+            <div class="panel-body">
+                Voici la liste des photos présentes sur le blog :
+            </div>
+        </div>
+        {% for article in photo %}
+            <!-- panel -->
+                <a href="{{ app.request.getBaseUrl() ~ article.getArLink() }}" target="_blank">
+                    <img class="img-responsive img-thumbnail col-sm-6 center-block" src="{{ app.request.getBaseUrl() ~ article.getArLink() }}" alt="Photo" style="height: 300px; height: 300px">
+                </a>
+        {% endfor %}
+    {% endif %}
+</div> <!-- /container -->

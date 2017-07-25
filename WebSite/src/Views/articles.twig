@@ -1,0 +1,32 @@
+<!-- Main part -->
+<div class="container">
+    <!-- panel si aucun article-->
+    {% if articles == null %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1 class="lead" style="text-align: center">
+                    Encore aucun article publié.
+                </h1>
+            </div>
+        </div>
+    {% else %}
+        <!-- panels affichants tous les articles en commencant par les derniers publiés -->
+        {% for article in articles %}
+            <!-- panel -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"> {{ article.getArTitle() }} </h3>
+                    Posté par Admin le {{ article.getArDate() |date('d-m-Y h:i:s') }}
+                </div>
+                <div class="panel-body" style="word-break : break-all">
+                    {{ article.getArDescription() }}
+
+                </div>
+                <!-- liens vers l'article en particulié avec photo et commentaire-->
+                <div class="panel-body">
+                    <a href="{{ app.request.getBaseUrl() }}/article/{{ article.getArId() }}" class="btn btn-info btn-block" role="button">Découvrir</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div> <!-- /container -->

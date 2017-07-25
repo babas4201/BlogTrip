@@ -1,0 +1,36 @@
+<!-- Main part -->
+<div class="container">
+    <!-- return button -->
+    <a class="btn btn-danger" href="{{ app.request.getBaseUrl() }}/administration/manageArticles" role="button">Retour</a>
+    {% if comments == null %}
+        <p></p>
+        <div class="panel panel-default" >
+            <div class="panel-body">
+                Il n'y a aucun commentaire pour cet article.
+            </div>
+        </div>
+    {% else %}
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Pseudo</th>
+                <th>Texte</th>
+                <th>Date Publication</th>
+                <th>Modification</th>
+                <th>Suppression</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for comment in comments %}
+                <tr>
+                    <th scope="row">{{ comment.getCoPseudo() }}</th>
+                    <td>{{ comment.getCoDescription() }}</td>
+                    <td>{{ comment.getCoDate()|date('d-m-Y h:i:s') }}</td>
+                    <td><a href="{{ app.request.getBaseUrl() }}/administration/comment/mod/{{ comment.getCoId() }}}/{{ comment.getArId()  }}" class="btn btn-warning btn-block" role="button">Mod</a></td>
+                    <td><a href="{{ app.request.getBaseUrl() }}/administration/comment/supp/{{ comment.getCoId() }}/{{ comment.getArId()  }}" class="btn btn-danger btn-block" role="button" id="deleteComment">Supp</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div> <!-- /container -->

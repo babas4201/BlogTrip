@@ -1,0 +1,30 @@
+<!-- Main part -->
+<div class="container">
+    <!-- return button -->
+    <a class="btn btn-danger" href="{{ app.request.getBaseUrl() }}/administration/index" role="button">Retour</a>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Date Publication</th>
+            <th>Modification</th>
+            <th>Suppression</th>
+            <th>Gestion commentaires</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <th scope="row">{{ article.getArTitle() }}</th>
+                <td>{{ article.getArDate()|date('d-m-Y h:i:s') }}</td>
+                <td><a href="{{ app.request.getBaseUrl() }}/administration/mod/{{ article.getArId() }}" class=" btn btn-warning btn-block" role="button">Mod</a></td>
+                <td><a href="{{ app.request.getBaseUrl() }}/administration/supp/{{ article.getArId() }}" class="btn btn-danger btn-block" role="button" id="deleteArticle">Supp</a></td>
+                <td><a href="{{ app.request.getBaseUrl() }}/administration/manage/{{ article.getArId() }}" class="btn btn-info btn-block" role="button">Gerer</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div> <!-- /container -->
+
+

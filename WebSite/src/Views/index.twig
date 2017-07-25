@@ -1,0 +1,52 @@
+<!-- Main part -->
+<div class="container">
+
+    <!-- panel de description -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Qui sommes-nous? Que faisons nous?  </h3>
+        </div>
+        <div class="panel-body">
+            <img src="../web/img/Montgolfiere.jpg" alt="image" style="float:right; width:30%; height:30%; margin-left:5%;"/>
+            <p style="text-align:justify;">MyBlogTrip est une agence de voyage, située dans l'Ain, plus précisément dans le centre de Bourg-en-Bresse.
+                Elle vous propose de multiples voyages autour du monde à des prix avantageux. Aimez-vous l'aventure ? Testez votre expérience avec MyBlogTrip, vous en tomberez amoureux !<br><br>
+                MyBlogTrip a été mis en ligne depuis 2005 afin que nos clients puissent partager leurs photos de leurs vacances. Vous pouvez ainsi les consulter, laisser des commentaires ou avoir de nouvelles destinations.<br><br>
+            <center><b>Partagez votre expérience avec MyBlogTrip !</b></center></p>
+        </div>
+    </div>
+
+    <!-- panel si aucun article n'est publié -->
+    {% if nbArticle == 0  %}
+        <!-- panel -->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                Il n'y a encore aucun article publié !
+            </div>
+        </div>
+    <!-- panel qui affiche les trois derniers articles ou moins -->
+    {% else %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p class="lead">
+                    Voici les derniers articles publiés :
+                </p>
+        {% for article in articles %}
+            <!-- panel -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"> {{ article.getArTitle() }} </h3>
+                    Posté par Admin le {{ article.getArDate() |date('d-m-Y h:i:s') }}
+                </div>
+                <div class="panel-body">
+                    {{ article.getArDescription() }}
+                </div>
+                <div class="panel-body">
+                    <a href="{{ app.request.getBaseUrl() }}/article/{{ article.getArId() }}" class="btn btn-info btn-block" role="button">Découvrir</a>
+                </div>
+            </div>
+        {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</div> <!-- /container -->
+

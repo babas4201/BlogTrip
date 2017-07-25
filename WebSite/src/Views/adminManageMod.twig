@@ -1,0 +1,44 @@
+<!-- Main part -->
+<div class="container">
+    <!-- return button -->
+    <a class="btn btn-danger" href="{{ app.request.getBaseUrl() }}/administration/manageArticles" role="button">Retour</a>
+    <p></p>
+    <!-- panel de description -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Modification de l'article</h3>
+        </div>
+        <div class="panel-body">
+            {% form_theme form 'bootstrap_3_layout.html.twig' %}
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+
+            {{ form_label(form.arTitle, 'Votre Titre:') }}
+            <div class='form-group'>
+                {{ form_widget(form.arTitle) }}
+                {{ form_errors(form.arTitle) }}
+            </div>
+
+            {{ form_label(form.arDescription, 'Votre Message:') }}
+            <div class='form-group'>
+                {{ form_widget(form.arDescription) }}
+                {{ form_errors(form.arDescription) }}
+            </div>
+
+            {{ form_label(form.arLink, 'Votre photo associée: (jpg ou png)') }}
+            <div class='form-group'>
+                {{ form_widget(form.arLink) }}
+                {{ form_errors(form.arLink) }}
+            </div>
+
+            {{ form_label(form.arDescPhoto, 'Titre de la photo:') }}
+            <div class='form-group'>
+                {{ form_widget(form.arDescPhoto) }}
+                {{ form_errors(form.arDescPhoto) }}
+            </div>
+
+            <button type="submit" class="btn btn-success center-block">Submit</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div> <!-- /container -->

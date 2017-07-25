@@ -1,0 +1,48 @@
+/* Extra Small */
+@media(max-width:767px){
+    body {
+        padding-top: 60px; /* navbar does not above container */
+    }
+}
+
+/* Small */
+@media(min-width:768px) and (max-width:991px){
+    body {
+        padding-top: 60px; /* navbar does not above container */
+    }
+}
+
+/* Medium */
+@media(min-width:992px) and (max-width:1199px){
+    body {
+        padding-top: 60px; /* navbar does not above container */
+    }
+}
+
+/* Large */
+@media(min-width:1200px){
+    body {
+        padding-top: 62px; /* navbar does not above container */
+    }
+}
+
+body {
+    padding-bottom: 60px; /* Footer does not above container */
+}
+
+html {
+    position: relative; /* page centered*/
+    min-height: 100%; /* footer fixed */
+}
+
+
+.footer {
+    position: absolute; /* footer fixed */
+    bottom: 0; /* footer fixed */
+    width: 100%; /* over all width */
+    background-color: #f5f5f5; /* Color footer */
+}
+
+textarea {
+    resize: none;
+}

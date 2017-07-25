@@ -1,0 +1,76 @@
+<!-- Main part -->
+<div class="container">
+    <!-- return button -->
+    <a class="btn btn-danger" href="{{ app.request.getBaseUrl() }}/articles" role="button">Retour</a>
+    <p></p>
+    <!-- panel qui affiche l'article avec tous ses composants-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"> {{ article.getArTitle() }} </h3>
+            Posté par Admin le {{ article.getArDate() |date('d-m-Y h:i:s') }}
+        </div>
+        <div class="panel-body" style="word-break : break-all">
+            {{ article.getArDescription() }}
+            <!-- On affiche l'image que si il y en a une-->
+            {% if  article.getArLink() != null %}
+                <p></p>
+                <div class="rounded">
+                    <a href="{{ app.request.getBaseUrl() ~ article.getArLink() }}" target="_blank">
+                        <img class="img-responsive img-rounded" src="{{ app.request.getBaseUrl() ~ article.getArLink() }}" alt="Photo">
+                        <div class="caption">
+                            <p style="text-align: center">{{ article.getArDescPhoto() }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endif  %}
+        </div>
+    </div>
+    <!-- panel des commentaire-->
+    <div class="panel panel-default" >
+        <div class="panel-body">Commentaire(s) :</div>
+    </div>
+    <!-- si pas de commentaire alors on affiche petit message-->
+    {% if  comments == null %}
+        <div class="panel panel-default" >
+            <div class="panel-body">Il n'y a encore aucun commentaire pour cet article. Soyez le premier à réagir ! </div>
+        </div>
+    {% endif  %}
+
+    <!-- on affiche tous les commentaires -->
+    {% for comment in comments %}
+        <!-- panel -->
+        <div class="panel panel-default">
+            <div class="panel-body" style="word-break : break-all">{{ comment.getCoDescription }}</div>
+            <div class="panel-footer" style="text-align: right;  font-size: small;">Posté par {{ comment.getCoPseudo }} le {{ comment.getCoDate()|date('d-m-Y h:i:s') }} </div>
+        </div>
+    {% endfor %}
+    <!-- Formulaire de reponse -->
+    <div class="panel panel-default" >
+        <div class="panel-body">
+            Répondre :
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {% form_theme form 'bootstrap_3_layout.html.twig' %}
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+
+                {{ form_label(form.commentPseudo, 'Votre pseudo:') }}
+                <div class='form-group'>
+                    {{ form_widget(form.commentPseudo) }}
+                    {{ form_errors(form.commentPseudo) }}
+                </div>
+
+                {{ form_label(form.commentDescription, 'Votre Message:') }}
+                <div class='form-group'>
+                    {{ form_widget(form.commentDescription) }}
+                    {{ form_errors(form.commentDescription) }}
+                </div>
+
+                <button type="submit" class="btn btn-success center-block">Submit</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+</div> <!-- /container -->

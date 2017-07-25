@@ -1,0 +1,32 @@
+<!-- Main part -->
+<div class="container">
+    <!-- return button -->
+    <a class="btn btn-danger" href="{{ app.request.getBaseUrl() }}/administration/manage/{{ idArticle }}" role="button">Retour</a>
+    <p></p>
+    <!-- panel de description -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Modification d'un commentaire</h3>
+        </div>
+        <div class="panel-body">
+            {% form_theme form 'bootstrap_3_layout.html.twig' %}
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+
+            {{ form_label(form.coPseudo, 'Son pseudo:') }}
+            <div class='form-group'>
+                {{ form_widget(form.coPseudo) }}
+                {{ form_errors(form.coPseudo) }}
+            </div>
+
+            {{ form_label(form.coDescription, 'Son Message:') }}
+            <div class='form-group'>
+                {{ form_widget(form.coDescription) }}
+                {{ form_errors(form.coDescription) }}
+            </div>
+
+            <button type="submit" class="btn btn-success center-block">Submit</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div> <!-- /container -->

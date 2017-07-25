@@ -1,0 +1,23 @@
+DUT\Models\Comment:
+  type: entity
+  table: comment
+
+  id:
+    coId:
+      type: integer
+      generator:
+        strategy: auto
+  fields:
+        arId:
+            type: integer
+            column: arId
+        coPseudo:
+            type: string
+            column: coPseudo
+        coDescription:
+            type: text
+            column: coDescription
+        coDate:
+            type: datetime
+            columnDefinition: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            column: coDate
